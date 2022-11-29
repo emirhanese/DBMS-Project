@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GuiController">
+   <children>
+      <StackPane fx:id="menuPage" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: rgb(153, 153, 255);">
+         <children>
+            <Pane fx:id="mainMenu" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="1.0" prefHeight="118.0" prefWidth="1280.0" style="-fx-alignment: center; -fx-background-radius: 50px; -fx-background-color: rgb(229,204,255); -fx-border-radius: 50px; -fx-border-color: white;" text="News Portal">
+                     <font>
+                        <Font size="50.0" />
+                     </font></Label>
+                  <Button fx:id="loginButton" alignment="CENTER" layoutX="548.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#entertainmentButtonClicked" prefHeight="30.0" prefWidth="185.0" style="-fx-border-color: rgb(64, 64, 64); -fx-border-radius: 15; -fx-background-color: rgb(192, 192, 192); -fx-background-radius: 15; -fx-border-width: 2; -fx-font-family: Bookman Old Style; -fx-font-weight: Bold; -fx-font-size: 13;" text="Login">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="registerButton" alignment="CENTER" layoutX="549.0" layoutY="425.0" mnemonicParsing="false" onMouseClicked="#entertainmentButtonClicked" prefHeight="30.0" prefWidth="185.0" style="-fx-border-color: rgb(64, 64, 64); -fx-border-radius: 15; -fx-background-color: rgb(192, 192, 192); -fx-background-radius: 15; -fx-border-width: 2; -fx-font-family: Bookman Old Style; -fx-font-weight: Bold; -fx-font-size: 13;" text="Register">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="exitButton" alignment="CENTER" layoutX="548.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#entertainmentButtonClicked" prefHeight="30.0" prefWidth="185.0" style="-fx-border-color: rgb(64, 64, 64); -fx-border-radius: 15; -fx-background-color: rgb(192, 192, 192); -fx-background-radius: 15; -fx-border-width: 2; -fx-font-family: Bookman Old Style; -fx-font-weight: Bold; -fx-font-size: 13;" text="Exit">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children></Pane>
+            <Pane fx:id="loginMenu" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Button fx:id="loginButton1" alignment="CENTER" disable="true" layoutX="380.0" layoutY="475.0" mnemonicParsing="false" onMouseClicked="#entertainmentButtonClicked" prefHeight="30.0" prefWidth="185.0" style="-fx-border-color: rgb(64, 64, 64); -fx-border-radius: 15; -fx-background-color: rgb(192, 192, 192); -fx-background-radius: 15; -fx-border-width: 2; -fx-font-family: Bookman Old Style; -fx-font-weight: Bold; -fx-font-size: 13;" text="Login">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="returnButton" alignment="CENTER" layoutX="697.0" layoutY="475.0" mnemonicParsing="false" onMouseClicked="#entertainmentButtonClicked" prefHeight="30.0" prefWidth="185.0" style="-fx-border-color: rgb(64, 64, 64); -fx-border-radius: 15; -fx-background-color: rgb(192, 192, 192); -fx-background-radius: 15; -fx-border-width: 2; -fx-font-family: Bookman Old Style; -fx-font-weight: Bold; -fx-font-size: 13;" text="Back">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="461.0" layoutY="225.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="Username :">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="463.0" layoutY="332.0" style="-fx-font-weight: bold; -fx-font-size: 15px;" text="Password :">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="loginPassField" layoutX="566.0" layoutY="328.0" prefHeight="25.0" prefWidth="185.0" promptText="password" />
+                  <TextField fx:id="loginUsernameField" layoutX="566.0" layoutY="223.0" prefHeight="25.0" prefWidth="185.0" promptText="username" />
+               </children></Pane>
+            <Pane fx:id="registerMenu" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <VBox alignment="CENTER_RIGHT" layoutX="195.0" layoutY="106.0" prefHeight="478.0" prefWidth="290.0" spacing="60.0">
+                     <children>
+                        <Label style="-fx-font-size: 15; -fx-font-weight: bold;" text="Name" />
+                        <Label style="-fx-font-size: 15; -fx-font-weight: bold;" text="Surname" />
+                        <Label style="-fx-font-size: 15; -fx-font-weight: bold;" text="E-mail" />
+                        <Label style="-fx-font-size: 15; -fx-font-weight: bold;" text="Age" />
+                        <Label style="-fx-font-size: 15; -fx-font-weight: bold;" text="Username" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" style="-fx-font-size: 15; -fx-font-weight: bold;" text="Password" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="547.0" layoutY="131.0" prefHeight="428.0" prefWidth="224.0" spacing="56.0">
+                     <children>
+                        <TextField fx:id="registerNameField" />
+                        <TextField fx:id="registerSurnameField" />
+                        <TextField fx:id="registerMailField" />
+                        <TextField fx:id="registerAgeField" />
+                        <TextField fx:id="registerUsernameField" />
+                        <PasswordField fx:id="registerPassField" />
+                     </children>
+                  </VBox>
+                  <Button fx:id="registerButton1" alignment="CENTER" disable="true" layoutX="362.0" layoutY="631.0" mnemonicParsing="false" onMouseClicked="#entertainmentButtonClicked" prefHeight="30.0" prefWidth="185.0" style="-fx-border-color: rgb(64, 64, 64); -fx-border-radius: 15; -fx-background-color: rgb(192, 192, 192); -fx-background-radius: 15; -fx-border-width: 2; -fx-font-family: Bookman Old Style; -fx-font-weight: Bold; -fx-font-size: 13;" text="Register">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="returnButton1" alignment="CENTER" layoutX="771.0" layoutY="631.0" mnemonicParsing="false" onMouseClicked="#entertainmentButtonClicked" prefHeight="30.0" prefWidth="185.0" style="-fx-border-color: rgb(64, 64, 64); -fx-border-radius: 15; -fx-background-color: rgb(192, 192, 192); -fx-background-radius: 15; -fx-border-width: 2; -fx-font-family: Bookman Old Style; -fx-font-weight: Bold; -fx-font-size: 13;" text="Back">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children></Pane>
+         </children>
+      </StackPane>
+      <Pane fx:id="homeCategoryPane" layoutX="9.0" layoutY="9.0" prefHeight="726.0" prefWidth="335.0" style="-fx-background-color: rgb(153, 153, 255);" visible="false">
+         <children>
+            <VBox fx:id="buttonsBox" layoutX="53.0" layoutY="249.0" prefHeight="397.0" prefWidth="231.0" spacing="50.0" style="-fx-border-width: 5px; -fx-border-color: white; -fx-border-radius: 10;">
+               <children>
+                  <Button fx:id="entertainmentButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#entertainmentButtonClicked" prefHeight="30.0" prefWidth="185.0" style="-fx-border-color: rgb(64, 64, 64); -fx-border-radius: 15; -fx-background-color: rgb(192, 192, 192); -fx-background-radius: 15; -fx-border-width: 2; -fx-font-family: Bookman Old Style; -fx-font-weight: Bold; -fx-font-size: 13;" text="Entertainment">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="healthButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#healthButtonClicked" prefHeight="30.0" prefWidth="185.0" style="-fx-border-color: rgb(64, 64, 64); -fx-border-radius: 15; -fx-background-color: rgb(192, 192, 192); -fx-background-radius: 15; -fx-border-width: 2; -fx-font-family: Bookman Old Style; -fx-font-size: 13; -fx-font-weight: Bold;" text="Health">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="scienceButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#scienceButtonClicked" prefHeight="30.0" prefWidth="185.0" style="-fx-border-color: rgb(64, 64, 64); -fx-border-radius: 15; -fx-background-color: rgb(192, 192, 192); -fx-background-radius: 15; -fx-border-width: 2; -fx-font-family: Bookman Old Style; -fx-font-size: 13; -fx-font-weight: Bold;" text="Science">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="technologyButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#technologyButtonClicked" prefHeight="30.0" prefWidth="185.0" style="-fx-border-color: rgb(64, 64, 64); -fx-border-radius: 15; -fx-background-color: rgb(192, 192, 192); -fx-background-radius: 15; -fx-border-width: 2; -fx-font-family: Bookman Old Style; -fx-font-size: 13; -fx-font-weight: Bold;" text="Technology">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="businessButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#businessButtonClicked" prefHeight="30.0" prefWidth="185.0" style="-fx-border-color: rgb(64, 64, 64); -fx-border-radius: 15; -fx-background-color: rgb(192, 192, 192); -fx-background-radius: 15; -fx-border-width: 2; -fx-font-family: Bookman Old Style; -fx-font-size: 13; -fx-font-weight: Bold;" text="Business">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="23.0" right="15.0" top="15.0" />
+               </padding>
+            </VBox>
+            <Label layoutX="14.0" layoutY="56.0" prefHeight="175.0" prefWidth="335.0" text="News Portal" textAlignment="CENTER" textFill="#9522e1">
+               <font>
+                  <Font name="Impact" size="35.0" />
+               </font>
+               <padding>
+                  <Insets left="70.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER" layoutX="-8.0" layoutY="688.0" prefHeight="25.0" prefWidth="341.0" text="By: Emirhan ESE and A.Eren SAGANDA">
+               <font>
+                  <Font name="Gill Sans Ultra Bold Condensed" size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </Label>
+            <Button fx:id="favoriteButton" alignment="CENTER" focusTraversable="false" layoutX="86.0" layoutY="31.0" maxHeight="40.0" maxWidth="47.0" mnemonicParsing="false" onMouseClicked="#favoriteButtonClicked" prefHeight="40.0" prefWidth="47.0" style="-fx-background-color: rgb(153, 153, 255); -fx-border-color: black; -fx-border-radius: 20; -fx-border-width: 2; -fx-background-radius: 20; -fx-max-height: 10; -fx-max-width: 10; -fx-min-height: 50; -fx-min-width: 50;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="historyButton" alignment="CENTER" focusTraversable="false" layoutX="189.0" layoutY="31.0" maxHeight="40.0" maxWidth="47.0" mnemonicParsing="false" onMouseClicked="#historyButtonClicked" prefHeight="40.0" prefWidth="47.0" style="-fx-background-color: rgb(153, 153, 255); -fx-border-color: black; -fx-border-radius: 20; -fx-border-width: 2; -fx-background-radius: 20; -fx-max-height: 10; -fx-max-width: 10; -fx-min-height: 50; -fx-min-width: 50;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <StackPane fx:id="homeNewsPane" layoutX="333.0" layoutY="-2.0" prefHeight="726.0" prefWidth="947.0" style="-fx-background-color: rgb(224, 224, 224);" visible="false">
+         <children>
+            <ScrollPane fx:id="newsScrollPane" prefHeight="158.0" prefWidth="235.0">
+              <content>
+                <AnchorPane fx:id="newsPane" minHeight="0.0" minWidth="0.0" prefHeight="4285.0" prefWidth="933.0">
+                     <children>
+                        <VBox fx:id="newsBox" layoutX="2.0" layoutY="-1.0" prefHeight="710.0" prefWidth="931.0" spacing="15.0">
+                           <children>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="931.0">
+                                 <children>
+                                    <Label layoutX="-2.0" prefHeight="200.0" prefWidth="931.0" style="-fx-font-family: Bookman Old Style; -fx-font-size: 18; -fx-font-weight: Bold; -fx-border-color: rgb(192, 192, 192); -fx-border-width: 2;" wrapText="true" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <ScrollPane fx:id="newsDetailScrollPane" prefHeight="200.0" prefWidth="200.0">
+              <content>
+                <AnchorPane fx:id="newsDetailPane" minHeight="0.0" minWidth="0.0" prefHeight="723.0" prefWidth="944.0">
+                     <children>
+                        <Label fx:id="titleLabel" alignment="CENTER" layoutX="5.0" layoutY="6.0" prefHeight="75.0" prefWidth="932.0" style="-fx-font-size: 21; -fx-font-family: Courier New; -fx-font-weight: bold;" text="Label" />
+                        <Label layoutX="5.0" layoutY="674.0" prefHeight="45.0" prefWidth="934.0" />
+                        <ScrollPane layoutX="2.0" layoutY="83.0" prefHeight="590.0" prefWidth="941.0" style="-fx-background-radius: 5; -fx-border-width: 3; -fx-border-radius: 5; -fx-border-color: rgb(204, 153, 255);">
+                          <content>
+                            <AnchorPane fx:id="detailedTextPane" minHeight="0.0" minWidth="0.0" prefHeight="582.0" prefWidth="927.0">
+                                 <children>
+                                    <Label fx:id="imageLabel" layoutX="291.0" layoutY="14.0" prefHeight="227.0" prefWidth="354.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;" />
+                                    <Label fx:id="detailedText" alignment="TOP_LEFT" layoutX="12.0" layoutY="267.0" lineSpacing="7.0" prefWidth="902.0" style="-fx-font-family: Booksman Old Style; -fx-font-size: 14; -fx-font-weight: bold;" text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbba" wrapText="true" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                        <Button fx:id="backButton" layoutX="5.0" layoutY="684.0" mnemonicParsing="false" onMouseClicked="#backButtonClicked" prefHeight="25.0" prefWidth="127.0" style="-fx-border-width: 2; -fx-border-color: rgb(178, 102, 255); -fx-border-radius: 5; -fx-background-color: rgb(229, 204, 255); -fx-font-size: 12; -fx-font-weight: bold;" text="Back">
+                           <effect>
+                              <DropShadow color="#9411b8" />
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

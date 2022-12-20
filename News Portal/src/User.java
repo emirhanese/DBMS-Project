@@ -1,11 +1,14 @@
 public class User {
-    
+
+    private int Id;
     private String name;
     private String surname;
     private String email;
     private int age;
     private String username;
     private String password;
+
+    private String favoriteCategory;
 
     public User() {
         
@@ -70,4 +73,19 @@ public class User {
         this.password = password;
     }
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public String getFavoriteCategory() {
+        return favoriteCategory;
+    }
+
+    public void setFavoriteCategory(String favoriteCategory) {
+        this.favoriteCategory = favoriteCategory;
+    }
 }

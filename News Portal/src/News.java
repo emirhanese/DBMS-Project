@@ -50,6 +50,11 @@ abstract class News{ // main purpose of making abstract class is because we do n
         this.viewsCounter++;
     }
 
+    protected void setViewsCounter(int value) {
+
+        this.viewsCounter = value;
+    }
+
     protected LinkedList<String> getTitles() {
 
         return this.titles;

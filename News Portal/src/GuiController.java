@@ -1,28 +1,26 @@
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class GuiController {
 
@@ -40,6 +38,8 @@ public class GuiController {
 
     private Database db = null;
     private User loggedUser;
+
+    private Label currentNewsLabel = null;
 
     @FXML
     private Button healthButton;
@@ -159,6 +159,18 @@ public class GuiController {
     private TextField loginUsernameField;
 
     @FXML
+    private Button postCommentButton;
+
+    @FXML
+    private Button showCommentsButton;
+
+    @FXML
+    private ScrollPane commentsScrollPane;
+
+    @FXML
+    private AnchorPane commentsPane;
+
+    @FXML
     void entertainmentButtonClicked(MouseEvent event) {
 
         if (this.newsPane.isVisible()) {
@@ -250,22 +262,29 @@ public class GuiController {
 
     @FXML
     void backButtonClicked(MouseEvent event) {
-
-        this.history.push(this.titleLabel.getText());
-        this.history.push(this.detailedText.getText());
-        this.history.push(this.imageLabel.getGraphic());
-
-        if(!viewedAlready(this.titleLabel.getText())) {
-
-            this.viewedNews.add(this.titleLabel.getText());
-            ((News)this.category).increaseViewsCounter();
-            this.bst.updateTree();
+        if(this.commentsScrollPane.isVisible()) {
+            this.commentsScrollPane.setVisible(false);
+            this.showCommentsButton.setDisable(false);
+            this.detailedTextPane.setVisible(true);
         }
-        
-        historyButtonController();
 
-        this.newsDetailScrollPane.setVisible(false);
-        this.newsPane.setVisible(true);
+        else {
+            this.history.push(this.titleLabel.getText());
+            this.history.push(this.detailedText.getText());
+            this.history.push(this.imageLabel.getGraphic());
+
+            if (!viewedAlready(this.titleLabel.getText())) {
+
+                this.viewedNews.add(this.titleLabel.getText());
+                ((News) this.category).increaseViewsCounter();
+                this.bst.updateTree();
+            }
+
+            historyButtonController();
+
+            this.newsDetailScrollPane.setVisible(false);
+            this.newsPane.setVisible(true);
+        }
     }
 
     @FXML
@@ -303,6 +322,117 @@ public class GuiController {
         }
     }
 
+    private void postComment(MouseEvent event) {
+
+        Stage newWindow = new Stage();
+        newWindow.setHeight(500);
+        newWindow.setWidth(500);
+        newWindow.setTitle("Post Comment");
+        newWindow.getIcons().add(new Image("file:icons/post-comment.png"));
+
+        AtomicBoolean postStatus = new AtomicBoolean(false);
+
+        Label title = new Label("Enter your comment in the box.");
+        TextArea textArea = new TextArea();
+        textArea.setWrapText(true);
+        Button button = new Button("Post Comment");
+        button.setDisable(true);
+        textArea.textProperty().addListener((observable, oldValue, newValue) -> {
+            button.setDisable((textArea.getText().startsWith(" ") || textArea.getText().startsWith("\n")) ||
+                    textArea.getText().length() == 0);
+        });
+
+        button.setOnAction(e -> {
+            postStatus.set(db.postComment(textArea.getText(), db.getNewsId(currentNewsLabel.getText())));
+            if(postStatus.get()) {
+                processSuccessful("Comment has been posted successfully.");
+                db.insertIntoUserComment(loggedUser.getId(), db.getCommentId(textArea.getText()));
+            }
+            newWindow.close();
+        });
+        VBox container = new VBox(title, textArea, button);
+
+        container.setSpacing(15);
+        container.setPadding(new Insets(25));
+        container.setAlignment(Pos.CENTER);
+
+        newWindow.setScene(new Scene(container));
+
+        newWindow.show();
+    }
+
+    private void processSuccessful(String message) {
+
+        Alert alert = new Alert(AlertType.INFORMATION);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("file:icons/success.png"));
+        alert.setTitle("Success");
+        alert.setContentText(message);
+        alert.show();
+    }
+
+    private void showComments(MouseEvent event) {
+       this.showCommentsButton.setDisable(true);
+       String newsTitle = currentNewsLabel.getText();
+       int newsId = db.getNewsId(newsTitle);
+       List<Comment> comments = db.getComments(newsId);
+
+       if(comments.isEmpty())
+           commentsPane.setPrefHeight(582.0);
+
+       else
+           buildCommentsPage(comments);
+
+       this.detailedTextPane.setVisible(false);
+       this.commentsScrollPane.setVisible(true);
+    }
+
+    private void buildCommentsPage(List<Comment> comments) {
+        if(!commentsPane.getChildren().isEmpty())
+            commentsPane.getChildren().clear();
+
+        VBox vbox = new VBox();
+        vbox.setSpacing(65);
+        vbox.heightProperty().addListener((observable, oldValue, newValue) -> {
+            commentsPane.setPrefHeight(Double.parseDouble(newValue.toString()));
+        });
+
+        for (Comment value : comments) {
+            HBox hbox = new HBox();
+            hbox.setPadding(new Insets(20, 20, 20, 20));
+            hbox.setSpacing(35);
+            hbox.setAlignment(Pos.CENTER_LEFT);
+            hbox.setStyle("-fx-background-color:rgb(240, 219, 219);");
+
+            Comment comment = value;
+            int commentID = comment.getCommentId();
+            String commentText = comment.getCommentText();
+            Timestamp datePosted = comment.getDatePosted();
+            User user = db.getUserByCommentID(commentID);
+
+            Label nameLabel = new Label();
+            nameLabel.setGraphic(new ImageView("file:icons/user.png"));
+            nameLabel.setText(user.getName() + " " + user.getSurname());
+            nameLabel.setGraphicTextGap(5);
+            nameLabel.setContentDisplay(ContentDisplay.TOP);
+
+            Label commentLabel = new Label();
+            commentLabel.setText(commentText);
+            commentLabel.setWrapText(true);
+            commentLabel.setTextAlignment(TextAlignment.JUSTIFY);
+            commentLabel.setMaxWidth(400);
+            commentLabel.setContentDisplay(ContentDisplay.RIGHT);
+
+            Label dateLabel = new Label();
+            dateLabel.setText(datePosted.toString());
+            dateLabel.setContentDisplay(ContentDisplay.RIGHT);
+
+            hbox.getChildren().addAll(nameLabel, commentLabel, dateLabel);
+            vbox.getChildren().add(hbox);
+        }
+
+        commentsPane.getChildren().add(vbox);
+    }
     private void setImageAndTitle(LinkedList<String> imageLinks, LinkedList<String> newsTitles) {
 
         for (int i = 0; i < imageLinks.length(); i++) {
@@ -404,11 +534,18 @@ public class GuiController {
         String username = this.loginUsernameField.getText();
         String pass = this.loginPassField.getText();
 
-        loggedUser = db.getUser(username, pass);
+        loggedUser = db.authenticateUser(username, pass);
 
         if(loggedUser != null) {
-            System.out.println("Congratulations ! You've successfully logged in to News Portal.");
-            
+            processSuccessful("Congratulations ! You've successfully logged in to News Portal.");
+            this.business.setViewsCounter(db.getReadNewsAmountByCategory(loggedUser, this.business.getCategory()));
+            this.entertainment.setViewsCounter(db.getReadNewsAmountByCategory(loggedUser, this.entertainment.getCategory()));
+            this.health.setViewsCounter(db.getReadNewsAmountByCategory(loggedUser, this.health.getCategory()));
+            this.science.setViewsCounter(db.getReadNewsAmountByCategory(loggedUser, this.science.getCategory()));
+            this.technology.setViewsCounter(db.getReadNewsAmountByCategory(loggedUser, this.technology.getCategory()));
+            this.bst.updateTree();
+            loggedUser.setFavoriteCategory(this.bst.getMostViewedCategory(this.bst.root));
+            db.updateUsersFavoriteCategory(loggedUser);
             this.menuPage.setVisible(false);
             this.homeCategoryPane.setVisible(true);
             this.homeNewsPane.setVisible(true);
@@ -417,11 +554,24 @@ public class GuiController {
         }
 
         else {
-            System.out.println("An error occured while logging in !");
+            processFailed("An error occurred while logging in !");
         }
     }
 
+    private void processFailed(String message) {
+
+        Alert alert = new Alert(AlertType.NONE);
+        alert.setAlertType(AlertType.ERROR);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("file:icons/error.png"));
+        alert.setTitle("Error");
+        alert.setContentText(message);
+        alert.show();
+    }
+
     private void register(MouseEvent event) {
+
+        boolean registered;
 
         String name = this.registerNameField.getText();
         String surname = this.registerSurnameField.getText();
@@ -431,7 +581,16 @@ public class GuiController {
         String password = this.registerPassField.getText();
 
         User userToRegister = new User(name, surname, email, age, username, password);
-        db.addUser(userToRegister);
+        registered = db.addUser(userToRegister);
+
+        if(registered) {
+            processSuccessful("Congratulations! You have been successfully created your account.");
+        }
+
+        else {
+
+            processFailed("There is already an account registered with this information.");
+        }
     }
 
     private void labelClicked(MouseEvent event) {
@@ -440,6 +599,7 @@ public class GuiController {
         this.titleLabel.setText("");
 
         Label label = (Label) event.getSource();
+        currentNewsLabel = label;
         String title = label.getText();
         int index = ((News)this.category).getTitles().indexOf(title);
 
@@ -458,7 +618,8 @@ public class GuiController {
         this.detailedTextPane.prefHeightProperty().bind(this.detailedText.prefHeightProperty());
         this.newsPane.setVisible(false);
         this.newsDetailScrollPane.setVisible(true);
-        
+        db.insertReadNews(title, url, text, ((News) this.category).getCategory());
+        db.insertIntoUserNews(loggedUser.getId(), db.getNewsId(title));
     }
 
     private void hisfavMouseEntered(MouseEvent event) {
@@ -588,7 +749,8 @@ public class GuiController {
         this.returnButton1.setOnMouseClicked(this::returnButtonClicked);
         this.registerButton1.setOnMouseClicked(this::register);
         this.loginButton1.setOnMouseClicked(this::login);
-        
+        this.postCommentButton.setOnMouseClicked(this::postComment);
+        this.showCommentsButton.setOnMouseClicked(this::showComments);
     }
 
 }
